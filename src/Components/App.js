@@ -3,6 +3,7 @@ import './App.css';
 import Title from './Title/Title'
 import CountDown from './CountDown/CountDown'
 import Controller from './Controller/Controller'
+import Laps from './Laps/Laps'
 
 class App extends Component{
 
@@ -14,7 +15,8 @@ class App extends Component{
         min : 0,
         sec:0,
         mili:0
-      }
+      },
+      laps: []
     }
   }
 
@@ -50,7 +52,15 @@ class App extends Component{
   }
 
   getLap(){
+    let time = {
+      ...this.state.time
+    }
+    this.setState({
+      ...this.state,
+      laps: [time, ...this.state.laps]
+    })
 
+    console.log(this.state.laps)
   }
 
   getReset(){
@@ -59,7 +69,8 @@ class App extends Component{
         min : 0,
         sec:0,
         mili:0
-      }
+      },
+      laps: []
     })
   }
 
@@ -77,7 +88,9 @@ render(){
                 start = {this.getStart.bind(this)}
                 pause = { this.getPause.bind(this)}
                 reset = { this.getReset.bind(this)}
+                lap = { this.getLap.bind(this)}
               />
+              <Laps className="my-5" laps={ this.state.laps}/>
            </div>
          </div>
       </div>

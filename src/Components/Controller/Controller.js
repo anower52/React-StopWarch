@@ -37,7 +37,7 @@ class Controller extends Component{
     }
 
     lapHandler(){
-
+        this.props.lap()
     }
 
     resetHandler(){
@@ -78,7 +78,7 @@ class Controller extends Component{
                     </button>
             </div>)
         }else if (this.state.start && this.state.reset) {
-            output = ( <div>
+            output = ( <div className="my-5">
                 <button 
                     className="btn btn-success btn-lg px-5 ml-5"
                     onClick = { event => this.startHandler() }
