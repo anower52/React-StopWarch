@@ -18,6 +18,33 @@ class App extends Component{
     }
   }
 
+  getStart(){
+    setInterval(()=>{
+      let min = this.state.time.min
+      let sec = this.state.time.sec
+      let mili = this.state.time.mili
+
+      if(mili >= 10){
+          sec = sec+1
+          mili = 0
+      }
+      if(sec >= 60){
+        min = min+1
+        sec = 0
+      }
+
+      this.setState({
+        ...this.state,
+        time: {
+          min,
+          sec,
+          mili : mili+1
+        }
+      })
+
+    }, 100)
+  }
+
 
 render(){
 
@@ -28,7 +55,9 @@ render(){
            <div className="col-sm-8 offset-sm-2">
               <Title />
               <CountDown time = {this.state.time} />
-              <Controller />
+              <Controller 
+                start = {this.getStart.bind(this)}
+              />
            </div>
          </div>
       </div>
