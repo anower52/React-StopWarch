@@ -19,7 +19,7 @@ class App extends Component{
   }
 
   getStart(){
-    setInterval(()=>{
+    this.intervalID = setInterval(()=>{
       let min = this.state.time.min
       let sec = this.state.time.sec
       let mili = this.state.time.mili
@@ -45,6 +45,10 @@ class App extends Component{
     }, 100)
   }
 
+  getPause(){
+    clearInterval (this.intervalID)
+  }
+
 
 render(){
 
@@ -57,6 +61,7 @@ render(){
               <CountDown time = {this.state.time} />
               <Controller 
                 start = {this.getStart.bind(this)}
+                pause = { this.getPause.bind(this)}
               />
            </div>
          </div>
