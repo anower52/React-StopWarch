@@ -47,6 +47,8 @@ class Controller extends Component{
             lap: false,
             reset: false
         })
+
+        this.props.reset()
     }
 
     getController() {

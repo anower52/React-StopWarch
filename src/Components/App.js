@@ -49,6 +49,20 @@ class App extends Component{
     clearInterval (this.intervalID)
   }
 
+  getLap(){
+
+  }
+
+  getReset(){
+    this.setState({
+      time: {
+        min : 0,
+        sec:0,
+        mili:0
+      }
+    })
+  }
+
 
 render(){
 
@@ -62,6 +76,7 @@ render(){
               <Controller 
                 start = {this.getStart.bind(this)}
                 pause = { this.getPause.bind(this)}
+                reset = { this.getReset.bind(this)}
               />
            </div>
          </div>
